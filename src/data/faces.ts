@@ -1,7 +1,7 @@
 import type { Sport, Star } from "./types";
 
 export function faceSrc(person: Star) {
-  return `/art/stars/${person.slug}.jpg`;
+  return `/art/stars/${person.slug}.jpg?v=skin2`;
 }
 
 export function facePreload(people: Star[]) {
