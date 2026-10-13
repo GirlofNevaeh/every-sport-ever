@@ -97,7 +97,7 @@ export const uiStrings = [
   "A sport has a way to win.",
   "People play for fun, for a team, and to do their best. The Olympic Games, the Paralympics, and the Special Olympics are not the same event.",
   "That page is not here.",
-  "Print a page, or pick a project from Primary 1 to Primary 7.",
+  "Print a page, or pick a project from Age 5-6 to Age 11-12.",
   "Rules card",
   "Print rules card",
   "Finish the medal table",

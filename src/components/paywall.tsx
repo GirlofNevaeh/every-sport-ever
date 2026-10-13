@@ -27,7 +27,7 @@ const CARDS = [
   {
     image: "/art/scenes/ice.jpg",
     title: "Work",
-    text: "Print a page, or pick a project from Primary 1 to Primary 7.",
+    text: "Print a page, or pick a project from Age 5-6 to Age 11-12.",
     frame: "border-track",
   },
 ] as const;

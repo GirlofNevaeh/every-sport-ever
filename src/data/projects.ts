@@ -17,7 +17,7 @@ export type Stage = {
 export const stages: Stage[] = [
   {
     id: "p1",
-    name: "Primary 1",
+    name: "Age 5-6",
     years: "About age 5 to 6",
     solo: {
       title: "Invent a playground game with one rule",
@@ -44,7 +44,7 @@ export const stages: Stage[] = [
   },
   {
     id: "p2",
-    name: "Primary 2",
+    name: "Age 6-7",
     years: "About age 6 to 7",
     solo: {
       title: "Say how a sport scores",
@@ -71,7 +71,7 @@ export const stages: Stage[] = [
   },
   {
     id: "p3",
-    name: "Primary 3",
+    name: "Age 7-8",
     years: "About age 7 to 8",
     solo: {
       title: "Make a rules card",
@@ -98,7 +98,7 @@ export const stages: Stage[] = [
   },
   {
     id: "p4",
-    name: "Primary 4",
+    name: "Age 8-9",
     years: "About age 8 to 9",
     solo: {
       title: "Compare two sports",
@@ -125,7 +125,7 @@ export const stages: Stage[] = [
   },
   {
     id: "p5",
-    name: "Primary 5",
+    name: "Age 9-10",
     years: "About age 9 to 10",
     solo: {
       title: "Two facts about a star",
@@ -152,7 +152,7 @@ export const stages: Stage[] = [
   },
   {
     id: "p6",
-    name: "Primary 6",
+    name: "Age 10-11",
     years: "About age 10 to 11",
     solo: {
       title: "Olympic Games and Paralympics",
@@ -179,7 +179,7 @@ export const stages: Stage[] = [
   },
   {
     id: "p7",
-    name: "Primary 7",
+    name: "Age 11-12",
     years: "About age 11 to 12",
     solo: {
       title: "Three Games, three meanings",
