@@ -8,6 +8,7 @@ export const LOCALES = [
   { id: "fr", native: "Français" },
   { id: "it", native: "Italiano" },
   { id: "es", native: "Español" },
+  { id: "de", native: "Deutsch" },
   { id: "ru", native: "Русский" },
 ] as const;
 
@@ -26,6 +27,7 @@ const loaders: Record<Exclude<LocaleId, "en">, () => Promise<{ default: Pack }>>
   fr: () => import("./packs/fr.json"),
   it: () => import("./packs/it.json"),
   es: () => import("./packs/es.json"),
+  de: () => import("./packs/de.json"),
   ru: () => import("./packs/ru.json"),
 };
 
