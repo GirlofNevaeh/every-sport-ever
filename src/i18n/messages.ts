@@ -148,7 +148,7 @@ export const uiStrings = [
   "Ask a teacher 3",
   "Also linked to",
   "Paralympian",
-  "For ages 5 to 12.",
+  "For young learners.",
   "You need a key to open this site.",
   "Buy a key at Every School Ever. Then type it here.",
   "Get a key",

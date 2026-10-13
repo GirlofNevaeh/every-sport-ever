@@ -68,7 +68,7 @@ export function Paywall({ onUnlocked }: { onUnlocked: (token: string) => void })
           <div className="p-4 sm:p-6">
             <h1 className="font-display text-4xl sm:text-5xl">{t("Every Sport Ever")}</h1>
             <p className="mt-2 max-w-xl text-lg">{t("Fifty sports, short rules, fun facts, and 100 sports stars.")}</p>
-            <p className="mt-2 text-lg font-bold text-gold">{t("For ages 5 to 12.")}</p>
+            <p className="mt-2 text-lg font-bold text-gold">{t("For young learners.")}</p>
           </div>
         </section>
 
