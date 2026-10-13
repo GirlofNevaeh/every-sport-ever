@@ -4,6 +4,7 @@ import { stars } from "./stars";
 export type Question = {
   id: string;
   prompt: string;
+  name: string;
   choices: [string, string, string, string];
   answer: 0 | 1 | 2 | 3;
 };
@@ -48,14 +49,16 @@ function makeQuestions(): Question[] {
     const score = buildChoice(sport.quizScore, scorePool, index * 17 + 3);
     questions.push({
       id: `score-${sport.slug}`,
-      prompt: `How do you score in ${sport.name}?`,
+      prompt: "How do you score in {name}?",
+      name: sport.name,
       choices: score.choices,
       answer: score.answer,
     });
     const where = buildChoice(sport.quizWhere, wherePool, index * 29 + 11);
     questions.push({
       id: `where-${sport.slug}`,
-      prompt: `Where do people play ${sport.name}?`,
+      prompt: "Where do people play {name}?",
+      name: sport.name,
       choices: where.choices,
       answer: where.answer,
     });
@@ -66,7 +69,8 @@ function makeQuestions(): Question[] {
       const built = buildChoice(person.country, countryPool, index * 13 + 5);
       questions.push({
         id: `country-${person.slug}`,
-        prompt: `Which country is ${person.name} from?`,
+        prompt: "Which country is {name} from?",
+        name: person.name,
         choices: built.choices,
         answer: built.answer,
       });
@@ -80,7 +84,8 @@ function makeQuestions(): Question[] {
       const built = buildChoice(correct, pool, index * 19 + 7);
       questions.push({
         id: `sport-${person.slug}`,
-        prompt: `Which sport is ${person.name} known for?`,
+        prompt: "Which sport is {name} known for?",
+        name: person.name,
         choices: built.choices,
         answer: built.answer,
       });

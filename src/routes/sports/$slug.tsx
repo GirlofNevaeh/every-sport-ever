@@ -4,6 +4,7 @@ import { getSport } from "@/data/sports";
 import { starsForSport } from "@/data/stars";
 import { StarPortrait } from "@/components/star-portrait";
 import type { Sport } from "@/data/types";
+import { useI18n } from "@/i18n/locale";
 
 export const Route = createFileRoute("/sports/$slug")({
   loader: ({ params }) => {
@@ -29,10 +30,11 @@ function SportPage() {
 }
 
 function StarsRow({ stars }: { stars: ReturnType<typeof starsForSport> }) {
+  const { t } = useI18n();
   if (stars.length === 0) return null;
   return (
     <section className="mt-6">
-      <h2 className="font-display text-2xl">Stars</h2>
+      <h2 className="font-display text-2xl">{t("Stars")}</h2>
       <ul className="mt-3 flex flex-wrap gap-3">
         {stars.map((person) => (
           <li key={person.slug}>
@@ -52,11 +54,12 @@ function StarsRow({ stars }: { stars: ReturnType<typeof starsForSport> }) {
 }
 
 function RuleList({ sport, light = false }: { sport: Sport; light?: boolean }) {
+  const { t } = useI18n();
   return (
     <ol className={`mt-3 space-y-2 ${light ? "text-vest" : "text-ink"}`}>
       {sport.rules.map((rule) => (
         <li key={rule} className="rounded-2xl bg-ink/10 px-3 py-2">
-          {rule}
+          {t(rule)}
         </li>
       ))}
     </ol>
@@ -72,27 +75,28 @@ function PitchSport({
   scene: string | null;
   stars: ReturnType<typeof starsForSport>;
 }) {
+  const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <article className="overflow-hidden rounded-[2rem] border-4 border-pitch bg-pitch text-vest">
         {scene ? <img src={scene} alt="" className="h-52 w-full object-cover" /> : null}
         <div className="p-4 sm:p-6">
-          <p className="text-sm font-bold text-gold">On the field</p>
-          <h1 className="font-display text-5xl">{sport.name}</h1>
-          <p className="mt-2 max-w-2xl text-lg">{sport.where}</p>
-          <h2 className="mt-5 font-display text-2xl text-gold">How you play</h2>
+          <p className="text-sm font-bold text-gold">{t("On the field")}</p>
+          <h1 className="font-display text-5xl">{t(sport.name)}</h1>
+          <p className="mt-2 max-w-2xl text-lg">{t(sport.where)}</p>
+          <h2 className="mt-5 font-display text-2xl text-gold">{t("How you play")}</h2>
           <RuleList sport={sport} light />
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <p className="rounded-2xl bg-gold p-4 text-ink">
-              <strong className="block font-display text-xl">Score</strong>
-              {sport.score}
+              <strong className="block font-display text-xl">{t("Score")}</strong>
+              {t(sport.score)}
             </p>
             <p className="rounded-2xl bg-vest p-4 text-ink">
-              <strong className="block font-display text-xl">Win</strong>
-              {sport.win}
+              <strong className="block font-display text-xl">{t("Win")}</strong>
+              {t(sport.win)}
             </p>
           </div>
-          <p className="mt-4 text-lg">{sport.fact}</p>
+          <p className="mt-4 text-lg">{t(sport.fact)}</p>
           <StarsRow stars={stars} />
         </div>
       </article>
@@ -101,27 +105,28 @@ function PitchSport({
 }
 
 function CourtSport({ sport, stars }: { sport: Sport; stars: ReturnType<typeof starsForSport> }) {
+  const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <article className="rounded-[2rem] border-4 border-ink bg-[linear-gradient(90deg,transparent_49%,#121212_49%,#121212_51%,transparent_51%),linear-gradient(#f7f4ef,#f7f4ef)] p-4 text-ink sm:p-6">
-        <p className="text-sm font-bold text-track">On the court</p>
-        <h1 className="font-display text-5xl text-pitch">{sport.name}</h1>
-        <p className="mt-2 max-w-2xl">{sport.where}</p>
+        <p className="text-sm font-bold text-track">{t("On the court")}</p>
+        <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
+        <p className="mt-2 max-w-2xl">{t(sport.where)}</p>
         <div className="mt-4 grid gap-4 lg:grid-cols-2">
           <section className="rounded-3xl bg-vest/90 p-4">
-            <h2 className="font-display text-2xl">How you play</h2>
+            <h2 className="font-display text-2xl">{t("How you play")}</h2>
             <RuleList sport={sport} />
           </section>
           <section className="flex flex-col gap-3">
             <p className="rounded-3xl bg-gold p-4">
-              <strong className="block font-display text-xl">Score</strong>
-              {sport.score}
+              <strong className="block font-display text-xl">{t("Score")}</strong>
+              {t(sport.score)}
             </p>
             <p className="rounded-3xl bg-track p-4 text-vest">
-              <strong className="block font-display text-xl">Win</strong>
-              {sport.win}
+              <strong className="block font-display text-xl">{t("Win")}</strong>
+              {t(sport.win)}
             </p>
-            <p className="rounded-3xl bg-pitch p-4 text-vest">{sport.fact}</p>
+            <p className="rounded-3xl bg-pitch p-4 text-vest">{t(sport.fact)}</p>
           </section>
         </div>
         <StarsRow stars={stars} />
@@ -139,32 +144,33 @@ function WaterSport({
   scene: string | null;
   stars: ReturnType<typeof starsForSport>;
 }) {
+  const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <article>
         {scene ? <img src={scene} alt="" className="h-48 w-full rounded-3xl object-cover" /> : null}
         <div className="mt-3 rounded-3xl bg-pitch px-4 py-5 text-vest">
-          <p className="text-sm font-bold text-gold">In the water</p>
-          <h1 className="font-display text-5xl">{sport.name}</h1>
-          <p className="mt-2">{sport.where}</p>
+          <p className="text-sm font-bold text-gold">{t("In the water")}</p>
+          <h1 className="font-display text-5xl">{t(sport.name)}</h1>
+          <p className="mt-2">{t(sport.where)}</p>
         </div>
         <ol className="mt-3 space-y-2">
           {sport.rules.map((rule, index) => (
             <li key={rule} className="rounded-full bg-gold px-4 py-3 text-ink">
               <span className="mr-2 font-display">{index + 1}</span>
-              {rule}
+              {t(rule)}
             </li>
           ))}
         </ol>
         <p className="mt-3 rounded-3xl border-4 border-track bg-vest p-4">
-          <strong>Score. </strong>
-          {sport.score}
+          <strong>{t("Score")}. </strong>
+          {t(sport.score)}
         </p>
         <p className="mt-3 rounded-3xl bg-track p-4 text-vest">
-          <strong>Win. </strong>
-          {sport.win}
+          <strong>{t("Win")}. </strong>
+          {t(sport.win)}
         </p>
-        <p className="mt-3 text-lg">{sport.fact}</p>
+        <p className="mt-3 text-lg">{t(sport.fact)}</p>
         <StarsRow stars={stars} />
       </article>
     </main>
@@ -180,25 +186,26 @@ function IceSport({
   scene: string | null;
   stars: ReturnType<typeof starsForSport>;
 }) {
+  const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <article className="rounded-[2rem] border-4 border-ink bg-[repeating-linear-gradient(180deg,#f7f4ef_0_18px,#121212_18px_20px)] p-2">
         <div className="rounded-[1.4rem] bg-vest p-4 sm:p-6">
           {scene ? <img src={scene} alt="" className="mb-3 h-44 w-full rounded-2xl object-cover" /> : null}
-          <p className="text-sm font-bold text-track">Ice and snow</p>
-          <h1 className="font-display text-5xl text-pitch">{sport.name}</h1>
-          <p className="mt-2">{sport.where}</p>
-          <h2 className="mt-4 font-display text-2xl">How you play</h2>
+          <p className="text-sm font-bold text-track">{t("Ice and snow")}</p>
+          <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
+          <p className="mt-2">{t(sport.where)}</p>
+          <h2 className="mt-4 font-display text-2xl">{t("How you play")}</h2>
           <RuleList sport={sport} />
           <p className="mt-4 text-lg">
-            <strong>Score. </strong>
-            {sport.score}
+            <strong>{t("Score")}. </strong>
+            {t(sport.score)}
           </p>
           <p className="mt-2 text-lg">
-            <strong>Win. </strong>
-            {sport.win}
+            <strong>{t("Win")}. </strong>
+            {t(sport.win)}
           </p>
-          <p className="mt-4 rounded-2xl bg-gold p-3">{sport.fact}</p>
+          <p className="mt-4 rounded-2xl bg-gold p-3">{t(sport.fact)}</p>
           <StarsRow stars={stars} />
         </div>
       </article>
@@ -207,28 +214,29 @@ function IceSport({
 }
 
 function MatSport({ sport, stars }: { sport: Sport; stars: ReturnType<typeof starsForSport> }) {
+  const { t } = useI18n();
   return (
     <main className="mx-auto max-w-3xl px-3 py-4">
       <article className="rounded-[2rem] border-[10px] border-track bg-vest p-4 text-ink shadow-[inset_0_0_0_6px_#F2C14E] sm:p-6">
-        <p className="text-center text-sm font-bold text-track">On the mat</p>
-        <h1 className="text-center font-display text-5xl">{sport.name}</h1>
-        <p className="mt-2 text-center">{sport.where}</p>
+        <p className="text-center text-sm font-bold text-track">{t("On the mat")}</p>
+        <h1 className="text-center font-display text-5xl">{t(sport.name)}</h1>
+        <p className="mt-2 text-center">{t(sport.where)}</p>
         <ul className="mt-4 space-y-2">
           {sport.rules.map((rule) => (
             <li key={rule} className="rounded-2xl bg-gold px-3 py-2">
-              {rule}
+              {t(rule)}
             </li>
           ))}
         </ul>
         <p className="mt-4">
-          <strong>Score. </strong>
-          {sport.score}
+          <strong>{t("Score")}. </strong>
+          {t(sport.score)}
         </p>
         <p className="mt-2">
-          <strong>Win. </strong>
-          {sport.win}
+          <strong>{t("Win")}. </strong>
+          {t(sport.win)}
         </p>
-        <p className="mt-4">{sport.fact}</p>
+        <p className="mt-4">{t(sport.fact)}</p>
         <StarsRow stars={stars} />
       </article>
     </main>
@@ -244,28 +252,29 @@ function RoadSport({
   scene: string | null;
   stars: ReturnType<typeof starsForSport>;
 }) {
+  const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <article>
         <div className="rounded-3xl bg-gold p-4 text-ink sm:p-6">
-          <p className="text-sm font-bold">On the move</p>
-          <h1 className="font-display text-5xl text-pitch">{sport.name}</h1>
-          <p className="mt-2">{sport.where}</p>
+          <p className="text-sm font-bold">{t("On the move")}</p>
+          <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
+          <p className="mt-2">{t(sport.where)}</p>
         </div>
         {scene ? <img src={scene} alt="" className="mt-3 h-48 w-full rounded-3xl object-cover" /> : null}
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {sport.rules.map((rule, index) => (
             <p key={rule} className="rounded-2xl bg-pitch p-4 text-vest">
-              <span className="font-display text-2xl text-gold">{index + 1}</span> {rule}
+              <span className="font-display text-2xl text-gold">{index + 1}</span> {t(rule)}
             </p>
           ))}
         </div>
         <p className="mt-3 rounded-2xl border-4 border-ink p-4">
-          <strong>Score. </strong>
-          {sport.score} <strong>Win. </strong>
-          {sport.win}
+          <strong>{t("Score")}. </strong>
+          {t(sport.score)} <strong>{t("Win")}. </strong>
+          {t(sport.win)}
         </p>
-        <p className="mt-3 text-lg">{sport.fact}</p>
+        <p className="mt-3 text-lg">{t(sport.fact)}</p>
         <StarsRow stars={stars} />
       </article>
     </main>

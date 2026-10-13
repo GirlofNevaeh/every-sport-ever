@@ -2,6 +2,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { SiteFooter, SiteHeader } from "@/components/chrome";
+import { LocaleProvider, useI18n } from "@/i18n/locale";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -34,20 +35,27 @@ export const Route = createRootRoute({
       <body>
         <PreviewHostBridge />
         <AuthProvider>
-          <SiteHeader />
-          <Outlet />
-          <SiteFooter />
+          <LocaleProvider>
+            <SiteHeader />
+            <Outlet />
+            <SiteFooter />
+          </LocaleProvider>
         </AuthProvider>
         <Scripts />
       </body>
     </html>
   ),
-  notFoundComponent: () => (
+  notFoundComponent: NotFound,
+});
+
+function NotFound() {
+  const { t } = useI18n();
+  return (
     <main className="mx-auto max-w-xl px-4 py-10">
-      <h1 className="font-display text-4xl text-pitch">That page is not here.</h1>
+      <h1 className="font-display text-4xl text-pitch">{t("That page is not here.")}</h1>
       <a href="/" className="mt-4 inline-flex h-12 items-center rounded-full bg-gold px-5 font-bold text-ink">
-        Home
+        {t("Home")}
       </a>
     </main>
-  ),
-});
+  );
+}

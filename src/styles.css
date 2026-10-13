@@ -40,6 +40,10 @@
     font-family: var(--font-display);
     line-height: 1.15;
   }
+
+  :lang(ru) {
+    --font-display: "Nunito", sans-serif;
+  }
 }
 
 @layer components {

@@ -14,7 +14,7 @@ export function normalize(value: string) {
     .normalize("NFD")
     .replace(/\p{M}/gu, "")
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
     .trim();
 }
 
@@ -31,12 +31,12 @@ function scoreName(query: string, name: string, exactBonus: number) {
   return 0;
 }
 
-export function searchAll(raw: string): Hit[] {
+export function searchAll(raw: string, t: (value: string) => string = (value) => value): Hit[] {
   const query = normalize(raw);
   if (!query) return [];
   const hits: Hit[] = [];
   for (const sport of sports) {
-    const names = [sport.name, ...sport.aka];
+    const names = [...new Set([sport.name, ...sport.aka].flatMap((name) => [name, t(name)]))];
     const score = Math.max(...names.map((name) => scoreName(query, name, 100)));
     if (score > 0) {
       hits.push({ kind: "sport", slug: sport.slug, name: sport.name, score, note: "Sport" });
@@ -58,8 +58,8 @@ export function searchAll(raw: string): Hit[] {
   return hits;
 }
 
-export function directHit(raw: string): Hit | null {
-  const hits = searchAll(raw);
+export function directHit(raw: string, t: (value: string) => string = (value) => value): Hit | null {
+  const hits = searchAll(raw, t);
   if (hits.length === 0) return null;
   const top = hits[0];
   const same = hits.filter((hit) => hit.score === top.score);

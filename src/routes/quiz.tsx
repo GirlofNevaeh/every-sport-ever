@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { questions, shuffleQuestions, type Question } from "@/data/quiz";
+import { useI18n } from "@/i18n/locale";
 
 export const Route = createFileRoute("/quiz")({ component: QuizPage });
 
@@ -13,11 +14,12 @@ function leaders(scores: number[], pool: number[]) {
 }
 
 function QuizPage() {
+  const { t, tf } = useI18n();
   const [phase, setPhase] = useState<Phase>("setup");
   const [length, setLength] = useState<10 | 25>(10);
   const [mode, setMode] = useState<"solo" | "teams">("solo");
   const [teamCount, setTeamCount] = useState(2);
-  const [names, setNames] = useState(() => Array.from({ length: 10 }, (_, index) => `Team ${index + 1}`));
+  const [custom, setCustom] = useState<(string | null)[]>(() => Array.from({ length: 10 }, () => null));
   const [bank, setBank] = useState<Question[]>([]);
   const [index, setIndex] = useState(0);
   const [scores, setScores] = useState<number[]>([]);
@@ -147,8 +149,10 @@ function QuizPage() {
   }
 
   function label(team: number) {
-    if (mode === "solo") return "You";
-    return names[team] || `Team ${team + 1}`;
+    if (mode === "solo") return t("You");
+    const typed = custom[team];
+    if (typed) return typed;
+    return tf("Team {n}", { n: team + 1 });
   }
 
   const mainScore = mode === "solo" ? (scores[0] ?? 0) : 0;
@@ -157,48 +161,48 @@ function QuizPage() {
     <main className="mx-auto max-w-3xl px-3 py-4">
       {flash ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gold px-4 text-center text-ink">
-          <p className="font-display text-5xl sm:text-7xl">CONGRATULATIONS</p>
+          <p className="font-display text-5xl sm:text-7xl">{t("CONGRATULATIONS")}</p>
         </div>
       ) : null}
 
       {phase === "setup" ? (
         <section>
-          <h1 className="font-display text-5xl text-pitch">Class Quiz</h1>
-          <p className="mt-2 text-lg">Quick 10 or Mega 25. Play solo, or with up to 10 teams of 4.</p>
+          <h1 className="font-display text-5xl text-pitch">{t("Class Quiz")}</h1>
+          <p className="mt-2 text-lg">{t("Quick 10 or Mega 25. Play solo, or with up to 10 teams of 4.")}</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <button
               type="button"
               onClick={() => setLength(10)}
               className={`h-16 rounded-3xl font-display text-2xl ${length === 10 ? "bg-pitch text-vest" : "bg-gold text-ink"}`}
             >
-              Quick 10
+              {t("Quick 10")}
             </button>
             <button
               type="button"
               onClick={() => setLength(25)}
               className={`h-16 rounded-3xl font-display text-2xl ${length === 25 ? "bg-pitch text-vest" : "bg-gold text-ink"}`}
             >
-              Mega 25
+              {t("Mega 25")}
             </button>
             <button
               type="button"
               onClick={() => setMode("solo")}
               className={`h-16 rounded-3xl font-display text-2xl ${mode === "solo" ? "bg-track text-vest" : "bg-vest text-ink border-2 border-ink"}`}
             >
-              Solo
+              {t("Solo")}
             </button>
             <button
               type="button"
               onClick={() => setMode("teams")}
               className={`h-16 rounded-3xl font-display text-2xl ${mode === "teams" ? "bg-track text-vest" : "bg-vest text-ink border-2 border-ink"}`}
             >
-              Teams
+              {t("Teams")}
             </button>
           </div>
           {mode === "teams" ? (
             <div className="mt-4 rounded-3xl bg-ink p-4 text-vest">
               <label htmlFor="team-count" className="font-bold">
-                How many teams? Up to 10. Each team can have 4 players.
+                {t("How many teams? Up to 10. Each team can have 4 players.")}
               </label>
               <input
                 id="team-count"
@@ -209,18 +213,18 @@ function QuizPage() {
                 onChange={(event) => setTeamCount(Number(event.target.value))}
                 className="mt-3 w-full"
               />
-              <p className="mt-1 font-display text-3xl text-gold">{teamCount} teams</p>
+              <p className="mt-1 font-display text-3xl text-gold">{tf("{count} teams", { count: teamCount })}</p>
               <ul className="mt-3 space-y-2">
-                {names.slice(0, teamCount).map((name, team) => (
+                {custom.slice(0, teamCount).map((name, team) => (
                   <li key={team}>
                     <label className="sr-only" htmlFor={`team-${team}`}>
-                      Team {team + 1} name
+                      {tf("Team {n} name", { n: team + 1 })}
                     </label>
                     <input
                       id={`team-${team}`}
-                      value={name}
+                      value={name ?? tf("Team {n}", { n: team + 1 })}
                       onChange={(event) =>
-                        setNames((current) => current.map((item, id) => (id === team ? event.target.value : item)))
+                        setCustom((current) => current.map((item, id) => (id === team ? event.target.value : item)))
                       }
                       className="h-11 w-full rounded-full border-2 border-gold bg-vest px-3 text-ink"
                     />
@@ -230,7 +234,7 @@ function QuizPage() {
             </div>
           ) : null}
           <button type="button" onClick={start} className="mt-4 h-14 w-full rounded-full bg-gold font-display text-2xl text-ink">
-            Start
+            {t("Start")}
           </button>
         </section>
       ) : null}
@@ -238,13 +242,13 @@ function QuizPage() {
       {phase !== "setup" && phase !== "done" && question ? (
         <section>
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="font-bold">{sudden ? "Sudden death" : `Question ${asked} of ${length}`}</p>
+            <p className="font-bold">{sudden ? t("Sudden death") : tf("Question {asked} of {total}", { asked, total: length })}</p>
             <button type="button" onClick={() => setPhase("setup")} className="text-sm font-bold text-track">
-              Stop
+              {t("Stop")}
             </button>
           </div>
-          {sudden && phase === "question" ? <p className="mt-2 rounded-2xl bg-gold px-3 py-2 text-ink">It is a tie. Sudden death.</p> : null}
-          <h1 className="mt-3 font-display text-3xl leading-tight text-ink">{question.prompt}</h1>
+          {sudden && phase === "question" ? <p className="mt-2 rounded-2xl bg-gold px-3 py-2 text-ink">{t("It is a tie. Sudden death.")}</p> : null}
+          <h1 className="mt-3 font-display text-3xl leading-tight text-ink">{question ? tf(question.prompt, { name: t(question.name) }) : ""}</h1>
           {mode === "solo" ? (
             <div className="mt-4 grid gap-2">
               {question.choices.map((choice, choiceIndex) => {
@@ -253,7 +257,7 @@ function QuizPage() {
                 const right = choiceIndex === question.answer;
                 return (
                   <button
-                    key={choice}
+                    key={choiceIndex}
                     type="button"
                     disabled={phase !== "question"}
                     onClick={() => choose(0, choiceIndex)}
@@ -267,9 +271,9 @@ function QuizPage() {
                             : "bg-vest text-ink border-2 border-ink"
                     } ${show && phase === "wait" ? "opacity-80" : ""}`}
                   >
-                    {choice}
-                    {phase === "reveal" && right ? " · Right" : ""}
-                    {phase === "reveal" && picked && !right ? " · Wrong" : ""}
+                    {t(choice)}
+                    {phase === "reveal" && right ? ` · ${t("Right")}` : ""}
+                    {phase === "reveal" && picked && !right ? ` · ${t("Wrong")}` : ""}
                   </button>
                 );
               })}
@@ -277,10 +281,10 @@ function QuizPage() {
           ) : (
             <div className="mt-4 space-y-3">
               {question.choices.map((choice, choiceIndex) => (
-                <p key={choice} className={`rounded-2xl px-3 py-3 ${phase === "reveal" && choiceIndex === question.answer ? "bg-gold text-ink" : "bg-vest border-2 border-ink"}`}>
+                <p key={choiceIndex} className={`rounded-2xl px-3 py-3 ${phase === "reveal" && choiceIndex === question.answer ? "bg-gold text-ink" : "bg-vest border-2 border-ink"}`}>
                   <span className="font-display text-xl">{String.fromCharCode(65 + choiceIndex)}. </span>
-                  {choice}
-                  {phase === "reveal" && choiceIndex === question.answer ? " · Right" : ""}
+                  {t(choice)}
+                  {phase === "reveal" && choiceIndex === question.answer ? ` · ${t("Right")}` : ""}
                 </p>
               ))}
               <ul className="space-y-3">
@@ -290,7 +294,7 @@ function QuizPage() {
                     <div className="mt-2 grid grid-cols-4 gap-2">
                       {question.choices.map((choice, choiceIndex) => (
                         <button
-                          key={choice}
+                          key={choiceIndex}
                           type="button"
                           disabled={phase !== "question"}
                           onClick={() => choose(team, choiceIndex)}
@@ -301,17 +305,17 @@ function QuizPage() {
                       ))}
                     </div>
                     {phase === "reveal" ? (
-                      <p className="mt-2">{picks[team] === question.answer ? "Right" : "Wrong"}</p>
+                      <p className="mt-2">{picks[team] === question.answer ? t("Right") : t("Wrong")}</p>
                     ) : null}
                   </li>
                 ))}
               </ul>
             </div>
           )}
-          {phase === "wait" ? <p className="mt-3 font-bold">Checking...</p> : null}
+          {phase === "wait" ? <p className="mt-3 font-bold">{t("Checking...")}</p> : null}
           {phase === "reveal" ? (
             <button type="button" onClick={advance} className="mt-4 h-12 w-full rounded-full bg-pitch font-bold text-vest">
-              Next
+              {t("Next")}
             </button>
           ) : null}
           <ul className="mt-4 flex flex-wrap gap-2">
@@ -327,11 +331,11 @@ function QuizPage() {
       {phase === "done" ? (
         <section className="rounded-[2rem] bg-ink p-5 text-vest">
           <h1 className="font-display text-4xl text-gold">
-            {result === "winner" ? `${winner} wins` : result === "draw" ? "It is a draw." : "Quiz done"}
+            {result === "winner" ? tf("{name} wins", { name: winner }) : result === "draw" ? t("It is a draw.") : t("Quiz done")}
           </h1>
           {result === "solo" ? (
             <p className="mt-3 text-2xl">
-              You scored {mainScore} out of {length}.
+              {tf("You scored {score} out of {total}.", { score: mainScore, total: length })}
             </p>
           ) : (
             <ul className="mt-4 space-y-2">
@@ -344,7 +348,7 @@ function QuizPage() {
             </ul>
           )}
           <button type="button" onClick={() => setPhase("setup")} className="mt-4 h-12 rounded-full bg-gold px-5 font-bold text-ink">
-            Play again
+            {t("Play again")}
           </button>
         </section>
       ) : null}

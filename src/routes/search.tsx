@@ -3,6 +3,7 @@ import { searchAll } from "@/data/find";
 import { getStar } from "@/data/stars";
 import { SearchForm } from "@/components/chrome";
 import { StarPortrait } from "@/components/star-portrait";
+import { useI18n } from "@/i18n/locale";
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -13,16 +14,17 @@ export const Route = createFileRoute("/search")({
 
 function SearchPage() {
   const { q } = Route.useSearch();
-  const hits = searchAll(q);
+  const { t } = useI18n();
+  const hits = searchAll(q, t);
   return (
     <main className="mx-auto max-w-3xl px-3 py-4">
-      <h1 className="font-display text-4xl text-pitch">Search</h1>
+      <h1 className="font-display text-4xl text-pitch">{t("Search")}</h1>
       <div className="mt-3">
         <SearchForm id="results-search" />
       </div>
-      {q.trim() === "" ? <p className="mt-4">Type a sport or a name.</p> : null}
+      {q.trim() === "" ? <p className="mt-4">{t("Type a sport or a name.")}</p> : null}
       {q.trim() !== "" && hits.length === 0 ? (
-        <p className="mt-4 text-lg">No sport or star has that name. Try football or Bolt.</p>
+        <p className="mt-4 text-lg">{t("No sport or star has that name. Try football or Bolt.")}</p>
       ) : null}
       <ul className="mt-4 space-y-2">
         {hits.map((hit) => {
@@ -38,12 +40,14 @@ function SearchPage() {
                   <StarPortrait person={person} className="h-16 w-16 rounded-2xl border-4 border-gold" />
                 ) : (
                   <span className="flex h-14 w-14 items-center justify-center rounded-full bg-pitch text-sm font-bold text-vest">
-                    Sport
+                    {t("Sport")}
                   </span>
                 )}
                 <span>
-                  <span className="block font-display text-xl leading-tight">{hit.name}</span>
-                  <span className="text-sm text-muted">{hit.note}</span>
+                  <span className="block font-display text-xl leading-tight">
+                    {hit.kind === "sport" ? t(hit.name) : hit.name}
+                  </span>
+                  <span className="text-sm text-muted">{t(hit.note)}</span>
                 </span>
               </Link>
             </li>

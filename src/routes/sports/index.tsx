@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { sports } from "@/data/sports";
 import type { Tag } from "@/data/types";
+import { useI18n } from "@/i18n/locale";
 
 export const Route = createFileRoute("/sports/")({ component: SportsPage });
 
@@ -15,6 +16,7 @@ const FILTERS: { id: Tag; label: string }[] = [
 ];
 
 function SportsPage() {
+  const { t, tf } = useI18n();
   const [picked, setPicked] = useState<Tag[]>([]);
 
   const visible = useMemo(
@@ -29,15 +31,15 @@ function SportsPage() {
 
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
-      <h1 className="font-display text-4xl text-pitch">Sports</h1>
-      <p className="mt-2 max-w-2xl text-lg">Fifty sports. Pick a group, or open any card.</p>
+      <h1 className="font-display text-4xl text-pitch">{t("Sports")}</h1>
+      <p className="mt-2 max-w-2xl text-lg">{t("Fifty sports. Pick a group, or open any card.")}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
           onClick={() => setPicked([])}
           className={`h-11 rounded-full px-4 font-bold ${picked.length === 0 ? "bg-pitch text-vest" : "bg-gold text-ink"}`}
         >
-          All
+          {t("All")}
         </button>
         {FILTERS.map((filter) => {
           const on = picked.includes(filter.id);
@@ -56,12 +58,14 @@ function SportsPage() {
                 dead ? "bg-ink/10 text-ink/35" : on ? "bg-track text-vest" : "bg-gold text-ink"
               }`}
             >
-              {filter.label}
+              {t(filter.label)}
             </button>
           );
         })}
       </div>
-      <p className="mt-3 text-sm font-bold text-muted">{visible.length} sports</p>
+      <p className="mt-3 text-sm font-bold text-muted">
+        {visible.length === 1 ? t("1 sport") : tf("{count} sports", { count: visible.length })}
+      </p>
       <ul className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-3">
         {visible.map((sport, index) => (
           <li key={sport.slug} className={index % 7 === 0 ? "col-span-2 md:col-span-1" : ""}>
@@ -80,8 +84,8 @@ function SportsPage() {
                         : "border-pitch bg-vest text-ink"
               }`}
             >
-              <span className="font-display text-2xl leading-tight">{sport.name}</span>
-              <span className="text-sm leading-snug">{sport.quizWhere}</span>
+              <span className="font-display text-2xl leading-tight">{t(sport.name)}</span>
+              <span className="text-sm leading-snug">{t(sport.quizWhere)}</span>
             </Link>
           </li>
         ))}
