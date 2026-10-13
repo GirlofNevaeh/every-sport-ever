@@ -1,5 +1,8 @@
 {
   "framework": null,
   "installCommand": "npm install --omit=dev --no-audit --no-fund",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "env": {
+    "VITE_AUTH_ENABLED": "false"
+  }
 }
