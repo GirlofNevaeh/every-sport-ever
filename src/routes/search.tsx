@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { searchAll } from "@/data/find";
-import { faceSrc } from "@/data/faces";
 import { getStar } from "@/data/stars";
 import { SearchForm } from "@/components/chrome";
+import { StarPortrait } from "@/components/star-portrait";
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -35,7 +35,7 @@ function SearchPage() {
                 className="flex items-center gap-3 rounded-2xl border-2 border-ink/10 bg-vest p-3"
               >
                 {person ? (
-                  <img src={faceSrc(person)} alt="" className="h-14 w-14 rounded-full object-cover" />
+                  <StarPortrait person={person} className="h-16 w-16 rounded-2xl border-4 border-gold" />
                 ) : (
                   <span className="flex h-14 w-14 items-center justify-center rounded-full bg-pitch text-sm font-bold text-vest">
                     Sport

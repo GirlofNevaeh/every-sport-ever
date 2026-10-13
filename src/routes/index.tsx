@@ -1,11 +1,15 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { factOfDay } from "@/data/day";
-import { faceSrc, sceneFor } from "@/data/faces";
+import { facePreload, sceneFor } from "@/data/faces";
 import { sports } from "@/data/sports";
 import { stars } from "@/data/stars";
 import { SearchForm } from "@/components/chrome";
+import { StarPortrait } from "@/components/star-portrait";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({
+  head: () => ({ links: facePreload(stars.slice(0, 16)) }),
+  component: Home,
+});
 
 function Home() {
   const navigate = useNavigate();
@@ -93,7 +97,7 @@ function Home() {
               params={{ slug: person.slug }}
               className="w-28 shrink-0 text-center"
             >
-              <img src={faceSrc(person)} alt="" className="mx-auto h-24 w-24 rounded-full border-4 border-gold object-cover" />
+              <StarPortrait person={person} className="mx-auto h-28 w-28 rounded-3xl border-4 border-gold" />
               <span className="mt-1 block text-sm font-bold leading-tight">{person.name}</span>
             </Link>
           ))}

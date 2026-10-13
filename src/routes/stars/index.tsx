@@ -1,11 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { faceSrc } from "@/data/faces";
+import { facePreload } from "@/data/faces";
 import { getSport } from "@/data/sports";
 import { stars } from "@/data/stars";
 import { SearchForm } from "@/components/chrome";
+import { StarPortrait } from "@/components/star-portrait";
 
-export const Route = createFileRoute("/stars/")({ component: StarsPage });
+export const Route = createFileRoute("/stars/")({
+  head: () => ({ links: facePreload(stars) }),
+  component: StarsPage,
+});
 
 type Filter = "all" | "women" | "para" | "special";
 
@@ -54,7 +58,7 @@ function StarsPage() {
                 params={{ slug: person.slug }}
                 className="block h-full rounded-3xl border-2 border-ink/10 bg-vest p-3 text-center"
               >
-                <img src={faceSrc(person)} alt="" className="mx-auto h-28 w-28 rounded-full border-4 border-gold object-cover" />
+                <StarPortrait person={person} className="mx-auto h-36 w-36 rounded-3xl border-4 border-gold" />
                 <span className="mt-2 block font-display text-lg leading-tight">{person.name}</span>
                 <span className="mt-1 block text-sm leading-tight text-muted">
                   {sport?.name} · {person.country}

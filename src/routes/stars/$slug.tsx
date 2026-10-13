@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { faceSrc } from "@/data/faces";
+import { facePreload } from "@/data/faces";
 import { getSport } from "@/data/sports";
 import { getStar } from "@/data/stars";
+import { StarPortrait } from "@/components/star-portrait";
 
 export const Route = createFileRoute("/stars/$slug")({
   loader: ({ params }) => {
@@ -9,6 +10,9 @@ export const Route = createFileRoute("/stars/$slug")({
     if (!person) throw notFound();
     return { person };
   },
+  head: ({ loaderData }) => ({
+    links: loaderData?.person ? facePreload([loaderData.person]) : [],
+  }),
   component: StarPage,
 });
 
@@ -17,10 +21,9 @@ function StarPage() {
   const sport = getSport(person.sports[0] ?? "");
   return (
     <main className="mx-auto grid max-w-5xl gap-4 px-3 py-4 md:grid-cols-[220px_1fr]">
-      <img
-        src={faceSrc(person)}
-        alt=""
-        className="h-56 w-full rounded-[2rem] border-4 border-gold object-cover md:h-72"
+      <StarPortrait
+        person={person}
+        className="aspect-square w-full max-w-sm justify-self-center rounded-[2rem] border-4 border-gold"
       />
       <article className="rounded-[2rem] bg-ink p-5 text-vest">
         <p className="text-sm font-bold text-gold">{person.country}</p>

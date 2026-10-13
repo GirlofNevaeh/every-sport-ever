@@ -1,8 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { sceneFor } from "@/data/faces";
+import { sceneFor, facePreload } from "@/data/faces";
 import { getSport } from "@/data/sports";
 import { starsForSport } from "@/data/stars";
-import { faceSrc } from "@/data/faces";
+import { StarPortrait } from "@/components/star-portrait";
 import type { Sport } from "@/data/types";
 
 export const Route = createFileRoute("/sports/$slug")({
@@ -11,6 +11,7 @@ export const Route = createFileRoute("/sports/$slug")({
     if (!sport) throw notFound();
     return { sport };
   },
+  head: ({ params }) => ({ links: facePreload(starsForSport(params.slug)) }),
   component: SportPage,
 });
 
@@ -40,7 +41,7 @@ function StarsRow({ stars }: { stars: ReturnType<typeof starsForSport> }) {
               params={{ slug: person.slug }}
               className="flex w-28 flex-col items-center rounded-2xl bg-vest p-2 text-center text-ink"
             >
-              <img src={faceSrc(person)} alt="" className="h-20 w-20 rounded-full object-cover" />
+              <StarPortrait person={person} className="h-24 w-24 rounded-2xl border-4 border-gold" />
               <span className="mt-1 text-sm font-bold leading-tight">{person.name}</span>
             </Link>
           </li>
