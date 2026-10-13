@@ -17,7 +17,7 @@ function WorkPage() {
   return (
     <main className="mx-auto max-w-3xl px-3 py-4">
       <h1 className="font-display text-5xl text-pitch">{t("Work")}</h1>
-      <p className="mt-2 text-lg">{t("Print a page, or pick a project from Age 5-6 to Age 11-12.")}</p>
+      <p className="mt-2 text-lg">{t("Print a page, or pick a project for Age 5-12.")}</p>
 
       <section className="print-sheet mt-5 rounded-3xl border-4 border-pitch bg-vest p-4">
         <div className="no-print mb-3">
