@@ -1,7 +1,7 @@
-import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
-import { SiteFooter, SiteHeader } from "@/components/chrome";
+import { SiteShell } from "@/components/access-gate";
 import { LocaleProvider, useI18n } from "@/i18n/locale";
 import appCss from "../styles.css?url";
 
@@ -36,9 +36,7 @@ export const Route = createRootRoute({
         <PreviewHostBridge />
         <AuthProvider>
           <LocaleProvider>
-            <SiteHeader />
-            <Outlet />
-            <SiteFooter />
+            <SiteShell />
           </LocaleProvider>
         </AuthProvider>
         <Scripts />

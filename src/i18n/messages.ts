@@ -146,4 +146,12 @@ export const uiStrings = [
   "Ask a teacher 3",
   "Also linked to",
   "Paralympian",
+  "For ages 5 to 12.",
+  "You need a key to open this site.",
+  "Buy a key at Every School Ever. Then type it here.",
+  "Get a key",
+  "Access key",
+  "Open the site",
+  "That key does not work. Try again.",
+  "The key stays on this device.",
 ] as const;
