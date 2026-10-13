@@ -30,12 +30,14 @@ for (const person of stars) {
 for (const stage of stages) {
   add(stage.name);
   add(stage.years);
-  for (const card of [stage.solo, stage.team]) {
-    add(card.title);
-    add(card.time);
-    add(card.need);
-    card.steps.forEach(add);
-    add(card.done);
+  for (const project of stage.projects) {
+    for (const card of [project.solo, project.team]) {
+      add(card.title);
+      add(card.time);
+      add(card.need);
+      card.steps.forEach(add);
+      add(card.done);
+    }
   }
 }
 

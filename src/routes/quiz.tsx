@@ -236,6 +236,14 @@ function QuizPage() {
           <button type="button" onClick={start} className="mt-4 h-14 w-full rounded-full bg-gold font-display text-2xl text-ink">
             {t("Start")}
           </button>
+          <a
+            href="/every-sport-ever-quiz.pdf"
+            target="_blank"
+            rel="noopener"
+            className="mt-3 flex h-14 w-full items-center justify-center rounded-full border-2 border-ink bg-vest text-center font-display text-2xl text-ink"
+          >
+            {t("Download the full quiz")}
+          </a>
         </section>
       ) : null}
 

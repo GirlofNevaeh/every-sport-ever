@@ -17,7 +17,7 @@ export const sports: Sport[] = [
     win: "The team with more goals wins. If the score is level, the game can be a draw, or some matches use extra time.",
     where: "On a grass or turf pitch, in almost every country.",
     fact: "Football is the world game. Some people call it soccer. The World Cup is played every four years.",
-    quizScore: "A goal scores one",
+    quizScore: "A goal scores one point",
     quizWhere: "On a grass pitch",
   },
   {
@@ -36,7 +36,7 @@ export const sports: Sport[] = [
     win: "The team with more points when time runs out wins.",
     where: "On a court indoors, or on an outdoor playground.",
     fact: "The hoop is 10 feet high. That is about 3 metres.",
-    quizScore: "Shots score 1, 2, or 3",
+    quizScore: "Shots score 1, 2, or 3 points",
     quizWhere: "On a hoop court",
   },
   {
@@ -74,7 +74,7 @@ export const sports: Sport[] = [
     win: "The first player to win the needed sets wins the match.",
     where: "On a clay, grass, or hard court.",
     fact: "Zero points in tennis is called love.",
-    quizScore: "Points, games, then sets",
+    quizScore: "You score points, then games, then sets",
     quizWhere: "On a tennis court",
   },
   {
@@ -93,7 +93,7 @@ export const sports: Sport[] = [
     win: "In a race, first across the line wins. In a jump or throw, the best distance wins.",
     where: "On a track, a field, or a road.",
     fact: "A marathon is 26.2 miles. That is about 42 kilometres.",
-    quizScore: "First, or the best distance",
+    quizScore: "First across the line, or the best distance",
     quizWhere: "On a track or field",
   },
   {
@@ -169,7 +169,7 @@ export const sports: Sport[] = [
     win: "The team with more points when time runs out wins.",
     where: "On a long field with yard lines.",
     fact: "The playing field is 100 yards long between the end zones.",
-    quizScore: "A touchdown is six",
+    quizScore: "A touchdown is six points",
     quizWhere: "On a long gridiron",
   },
   {
@@ -207,7 +207,7 @@ export const sports: Sport[] = [
     win: "A set usually goes to 25 points, and you must lead by two. The first team to win three sets wins the match.",
     where: "On an indoor court with a high net.",
     fact: "The net is higher for adults than for children.",
-    quizScore: "Rally points to 25",
+    quizScore: "Rally points go to 25",
     quizWhere: "On an indoor court",
   },
   {
@@ -226,7 +226,7 @@ export const sports: Sport[] = [
     win: "The first to 11 points wins the game, but you must lead by two.",
     where: "On a table, indoors.",
     fact: "The ball is hollow and very light. A fast rally can last only a few seconds.",
-    quizScore: "First to 11, lead by two",
+    quizScore: "First to 11 points, and lead by two",
     quizWhere: "On a table",
   },
   {
@@ -245,7 +245,7 @@ export const sports: Sport[] = [
     win: "The first to 21 points wins the game, but you must lead by two. A match is usually best of three games.",
     where: "On an indoor court.",
     fact: "A shuttlecock has a cone of feathers, or a plastic skirt.",
-    quizScore: "First to 21, lead by two",
+    quizScore: "First to 21 points, and lead by two",
     quizWhere: "On a badminton court",
   },
   {
@@ -264,7 +264,7 @@ export const sports: Sport[] = [
     win: "The player who finishes the holes in the fewest strokes wins.",
     where: "On a golf course of fairways, rough, and greens.",
     fact: "A hole-in-one means the ball goes in the hole in one stroke.",
-    quizScore: "Fewest strokes wins",
+    quizScore: "The fewest strokes win",
     quizWhere: "On a golf course",
   },
   {
@@ -321,7 +321,7 @@ export const sports: Sport[] = [
     win: "The wrestler with more points when time ends wins. A very strong hold can end the match sooner.",
     where: "On a wrestling mat.",
     fact: "Greco-Roman wrestlers may not grab below the waist. Freestyle wrestlers may.",
-    quizScore: "Points for fair holds",
+    quizScore: "A fair hold scores points",
     quizWhere: "On a wrestling mat",
   },
   {
@@ -340,7 +340,7 @@ export const sports: Sport[] = [
     win: "The judoka with the higher score wins. One perfect throw, called ippon, wins the match at once.",
     where: "On a judo mat called a tatami.",
     fact: "Belt colours show how long a judoka has trained. Black belt is a high rank.",
-    quizScore: "Throws and holds score",
+    quizScore: "Throws and holds score points",
     quizWhere: "On a judo mat",
   },
   {
@@ -359,7 +359,7 @@ export const sports: Sport[] = [
     win: "The person with more points wins.",
     where: "On a taekwondo mat.",
     fact: "Taekwondo began in Korea. Athletes wear a chest guard and a helmet.",
-    quizScore: "Points on the pads",
+    quizScore: "Hits on the pads score points",
     quizWhere: "On a taekwondo mat",
   },
   {
@@ -378,7 +378,7 @@ export const sports: Sport[] = [
     win: "The fencer with more points wins the bout.",
     where: "On a fencing piste, indoors.",
     fact: "Foil, epee, and sabre each have a different target area.",
-    quizScore: "A touch on the target",
+    quizScore: "A touch on the target scores a point",
     quizWhere: "On a fencing piste",
   },
   {
@@ -397,7 +397,7 @@ export const sports: Sport[] = [
     win: "The archer with the higher score wins.",
     where: "At an archery range, outdoors or indoors.",
     fact: "The centre of the target is called the gold.",
-    quizScore: "Arrows near the centre",
+    quizScore: "Arrows nearer the centre score more",
     quizWhere: "At an archery range",
   },
   {
@@ -416,7 +416,7 @@ export const sports: Sport[] = [
     win: "The first boat to cross the line wins.",
     where: "On a calm river, a lake, or a rowing basin.",
     fact: "An Olympic rowing race is 2,000 metres.",
-    quizScore: "First boat across",
+    quizScore: "The first boat across the line",
     quizWhere: "On a river or a lake",
   },
   {
@@ -435,7 +435,7 @@ export const sports: Sport[] = [
     win: "In a sprint, first across the line wins. In slalom, the fastest fair time wins.",
     where: "On a lake, a basin, or a white-water course.",
     fact: "In a kayak you sit low and use a paddle with two blades. In a canoe the paddle often has one blade.",
-    quizScore: "First, or the fastest time",
+    quizScore: "First across the line, or the fastest time",
     quizWhere: "On calm or wild water",
   },
   {
@@ -454,7 +454,7 @@ export const sports: Sport[] = [
     win: "The boat with the best score across the races wins. In one race, first to finish within the rules wins.",
     where: "On the sea, a bay, or a lake.",
     fact: "Sailors lean out of the boat to keep it steady. That move is called hiking.",
-    quizScore: "Best scores across races",
+    quizScore: "The best scores over the races",
     quizWhere: "On the sea or a lake",
   },
   {
@@ -473,7 +473,7 @@ export const sports: Sport[] = [
     win: "The team with more goals wins.",
     where: "On a turf pitch.",
     fact: "The ball is small and hard. Players wear shin guards.",
-    quizScore: "A goal scores one",
+    quizScore: "A goal scores one point",
     quizWhere: "On a hockey pitch",
   },
   {
@@ -492,7 +492,7 @@ export const sports: Sport[] = [
     win: "The team with more goals when time runs out wins.",
     where: "On an ice rink.",
     fact: "The puck is made of rubber and is frozen before a game so it slides well.",
-    quizScore: "A goal scores one",
+    quizScore: "A goal scores one point",
     quizWhere: "On an ice hockey rink",
   },
   {
@@ -530,7 +530,7 @@ export const sports: Sport[] = [
     win: "In a race, the fastest fair time wins. In a trick event, the higher score wins.",
     where: "On a snowy mountain.",
     fact: "Alpine skiing uses fixed-heel boots. Cross-country skiing lets the heel lift.",
-    quizScore: "Fastest time, or a score",
+    quizScore: "The fastest fair time, or a trick score",
     quizWhere: "On a snowy slope",
   },
   {
@@ -549,7 +549,7 @@ export const sports: Sport[] = [
     win: "In a race, the fastest fair time wins. In a trick event, the higher score wins.",
     where: "On a snow park or a mountain slope.",
     fact: "Both feet are fixed to the same board.",
-    quizScore: "Fastest time, or judges",
+    quizScore: "The fastest time, or a judge's score",
     quizWhere: "On a snow park",
   },
   {
@@ -606,7 +606,7 @@ export const sports: Sport[] = [
     win: "In speed, the fastest climber wins. In boulder and lead, the higher score wins.",
     where: "On a climbing wall, or on real rock.",
     fact: "A bouldering problem is short. You do it with a mat underneath, and no rope.",
-    quizScore: "Fastest, or the highest score",
+    quizScore: "The fastest time, or the highest score",
     quizWhere: "On a climbing wall",
   },
   {
@@ -625,7 +625,7 @@ export const sports: Sport[] = [
     win: "The lifter with the highest total wins.",
     where: "On a lifting platform.",
     fact: "Lifters get three tries at each lift.",
-    quizScore: "Heaviest good lifts",
+    quizScore: "The heaviest good lifts count",
     quizWhere: "On a lifting platform",
   },
   {
@@ -644,7 +644,7 @@ export const sports: Sport[] = [
     win: "The team with more goals when time runs out wins.",
     where: "On an indoor court.",
     fact: "The ball is bigger than a football and is made to be gripped in one hand.",
-    quizScore: "A goal scores one",
+    quizScore: "A goal scores one point",
     quizWhere: "On a handball court",
   },
   {
@@ -663,7 +663,7 @@ export const sports: Sport[] = [
     win: "The team with more goals when time runs out wins.",
     where: "In a deep pool with floating goals.",
     fact: "Players wear caps so the referee can see the two teams.",
-    quizScore: "A goal scores one",
+    quizScore: "A goal scores one point",
     quizWhere: "In a pool with goals",
   },
   {
@@ -698,10 +698,10 @@ export const sports: Sport[] = [
       "Eventing mixes dressage, cross-country, and jumping.",
     ],
     score: "Dressage uses judge scores. Showjumping counts faults for poles and for time.",
-    win: "In dressage, the higher score wins. In showjumping, fewer faults wins.",
+    win: "In dressage, the higher score wins. In showjumping, fewer faults win.",
     where: "In an arena, or on a cross-country course.",
     fact: "The horse and the rider are a team. Both must know the test.",
-    quizScore: "Scores, or fewer faults",
+    quizScore: "A higher score, or fewer faults",
     quizWhere: "In a horse arena",
   },
   {
@@ -721,7 +721,7 @@ export const sports: Sport[] = [
     where: "In open water, on a bike course, and on a run course.",
     fact: "The Olympic order is always swim, bike, then run.",
     quizScore: "First across the line",
-    quizWhere: "Swim, bike, then run",
+    quizWhere: "In open water, on a bike course, then a run",
   },
   {
     slug: "netball",
@@ -739,7 +739,7 @@ export const sports: Sport[] = [
     win: "The team with more goals when time runs out wins.",
     where: "On a netball court, often outdoors or in a hall.",
     fact: "Netball is played in many countries of the Commonwealth.",
-    quizScore: "A goal scores one",
+    quizScore: "A goal scores one point",
     quizWhere: "On a netball court",
   },
   {
@@ -777,7 +777,7 @@ export const sports: Sport[] = [
     win: "You win if the other wrestler steps out, or if any part of them but the feet touches the clay.",
     where: "In a dohyo, the clay ring, in Japan and in some other countries.",
     fact: "A yokozuna is the highest rank in sumo.",
-    quizScore: "Win the bout, no points",
+    quizScore: "You win the bout, with no points",
     quizWhere: "In a clay ring",
   },
   {
@@ -796,7 +796,7 @@ export const sports: Sport[] = [
     win: "The team with more points at the end wins.",
     where: "On a large oval field in Australia.",
     fact: "The field is oval, not a rectangle. It is one of the biggest team pitches in sport.",
-    quizScore: "Goals are six, behinds one",
+    quizScore: "A goal is six points. A behind is one.",
     quizWhere: "On a big oval field",
   },
   {
@@ -815,7 +815,7 @@ export const sports: Sport[] = [
     win: "The team with more points at the end wins.",
     where: "On a Gaelic pitch in Ireland, and in Irish clubs around the world.",
     fact: "Gaelic football and hurling are the two big Irish field games.",
-    quizScore: "A goal is three, a point is one",
+    quizScore: "A goal is three points. A point is one.",
     quizWhere: "On a Gaelic pitch",
   },
   {
@@ -834,7 +834,7 @@ export const sports: Sport[] = [
     win: "The team with more points after all the ends wins.",
     where: "On a sheet of ice in a curling rink.",
     fact: "The target is called the house. The centre is the button.",
-    quizScore: "Stones closer to the centre",
+    quizScore: "Stones closer to the centre score",
     quizWhere: "On a sheet of ice",
   },
   {
@@ -853,7 +853,7 @@ export const sports: Sport[] = [
     win: "The first car across the line wins that race. The driver with the most points wins the season title.",
     where: "On racing tracks around the world.",
     fact: "A Grand Prix starts with lights. When the lights go out, the race begins.",
-    quizScore: "Points for the finish place",
+    quizScore: "Points for your finishing place",
     quizWhere: "On a racing track",
   },
   {
@@ -910,7 +910,7 @@ export const sports: Sport[] = [
     win: "Sets go to 21 points, and you must lead by two. The first team to win two sets wins. A third set goes to 15.",
     where: "On a sand court by a beach or in a stadium.",
     fact: "Each team has only two players, so you cover the whole court.",
-    quizScore: "Rally points to 21",
+    quizScore: "Rally points go to 21",
     quizWhere: "On a sand court",
   },
   {
@@ -948,7 +948,7 @@ export const sports: Sport[] = [
     win: "A game is usually to 11 points. The first to win three games wins the match.",
     where: "In a four-wall squash court.",
     fact: "The ball is small and can move very fast off the walls.",
-    quizScore: "Games usually to 11",
+    quizScore: "Games usually go to 11",
     quizWhere: "In a four-wall court",
   },
 ];

@@ -41,6 +41,7 @@ function buildChoice(correct: string, pool: string[], seed: number) {
 function makeQuestions(): Question[] {
   const scorePool = sports.map((sport) => sport.quizScore);
   const wherePool = sports.map((sport) => sport.quizWhere);
+  const winPool = sports.map((sport) => sport.win);
   const countryPool = [...new Set(stars.map((person) => person.country))];
   const sportNames = sports.map((sport) => sport.name);
   const questions: Question[] = [];
@@ -57,10 +58,18 @@ function makeQuestions(): Question[] {
     const where = buildChoice(sport.quizWhere, wherePool, index * 29 + 11);
     questions.push({
       id: `where-${sport.slug}`,
-      prompt: "Where do people play {name}?",
+      prompt: "Where do people take part in {name}?",
       name: sport.name,
       choices: where.choices,
       answer: where.answer,
+    });
+    const win = buildChoice(sport.win, winPool, index * 23 + 9);
+    questions.push({
+      id: `win-${sport.slug}`,
+      prompt: "How do you win in {name}?",
+      name: sport.name,
+      choices: win.choices,
+      answer: win.answer,
     });
   });
 

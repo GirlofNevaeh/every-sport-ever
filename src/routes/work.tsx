@@ -82,10 +82,12 @@ function WorkPage() {
               {t(stage.name)}
               <span className="mt-1 block text-base font-sans font-bold text-muted">{t(stage.years)}</span>
             </h2>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
-              <Task title={t("On your own")} card={stage.solo} />
-              <Task title={t("With a team")} card={stage.team} />
-            </div>
+            {stage.projects.map((project) => (
+              <div key={project.id} className="mt-3 grid gap-3 md:grid-cols-2">
+                <Task title={t("On your own")} card={project.solo} />
+                <Task title={t("With a team")} card={project.team} />
+              </div>
+            ))}
           </article>
         ))}
         <button type="button" onClick={() => window.print()} className="no-print h-12 rounded-full bg-pitch px-5 font-bold text-vest">
