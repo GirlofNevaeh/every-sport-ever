@@ -23,9 +23,9 @@ function SportPage() {
 
   if (sport.family === "water") return <WaterSport sport={sport} scene={scene} stars={linked} />;
   if (sport.family === "ice") return <IceSport sport={sport} scene={scene} stars={linked} />;
-  if (sport.family === "mat") return <MatSport sport={sport} stars={linked} />;
+  if (sport.family === "mat") return <MatSport sport={sport} scene={scene} stars={linked} />;
   if (sport.family === "road") return <RoadSport sport={sport} scene={scene} stars={linked} />;
-  if (sport.family === "court") return <CourtSport sport={sport} stars={linked} />;
+  if (sport.family === "court") return <CourtSport sport={sport} scene={scene} stars={linked} />;
   return <PitchSport sport={sport} scene={scene} stars={linked} />;
 }
 
@@ -104,11 +104,20 @@ function PitchSport({
   );
 }
 
-function CourtSport({ sport, stars }: { sport: Sport; stars: ReturnType<typeof starsForSport> }) {
+function CourtSport({
+  sport,
+  scene,
+  stars,
+}: {
+  sport: Sport;
+  scene: string | null;
+  stars: ReturnType<typeof starsForSport>;
+}) {
   const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <article className="rounded-[2rem] border-4 border-ink bg-[linear-gradient(90deg,transparent_49%,#121212_49%,#121212_51%,transparent_51%),linear-gradient(#f7f4ef,#f7f4ef)] p-4 text-ink sm:p-6">
+        {scene ? <img src={scene} alt="" className="mb-4 h-48 w-full rounded-3xl object-cover" /> : null}
         <p className="text-sm font-bold text-track">{t("On the court")}</p>
         <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
         <p className="mt-2 max-w-2xl">{t(sport.where)}</p>
@@ -213,11 +222,20 @@ function IceSport({
   );
 }
 
-function MatSport({ sport, stars }: { sport: Sport; stars: ReturnType<typeof starsForSport> }) {
+function MatSport({
+  sport,
+  scene,
+  stars,
+}: {
+  sport: Sport;
+  scene: string | null;
+  stars: ReturnType<typeof starsForSport>;
+}) {
   const { t } = useI18n();
   return (
     <main className="mx-auto max-w-3xl px-3 py-4">
       <article className="rounded-[2rem] border-[10px] border-track bg-vest p-4 text-ink shadow-[inset_0_0_0_6px_#F2C14E] sm:p-6">
+        {scene ? <img src={scene} alt="" className="mb-4 h-48 w-full rounded-3xl object-cover" /> : null}
         <p className="text-center text-sm font-bold text-track">{t("On the mat")}</p>
         <h1 className="text-center font-display text-5xl">{t(sport.name)}</h1>
         <p className="mt-2 text-center">{t(sport.where)}</p>
