@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 
 export const LOCALES = [
   { id: "en", native: "English" },
+  { id: "en-US", native: "American English" },
   { id: "gd", native: "Gàidhlig" },
   { id: "cy", native: "Cymraeg" },
   { id: "ga", native: "Gaeilge" },
@@ -21,6 +22,7 @@ type Pack = Record<string, string>;
 const cache: Partial<Record<LocaleId, Pack>> = { en: {} };
 
 const loaders: Record<Exclude<LocaleId, "en">, () => Promise<{ default: Pack }>> = {
+  "en-US": () => import("./packs/en-US.json"),
   gd: () => import("./packs/gd.json"),
   cy: () => import("./packs/cy.json"),
   ga: () => import("./packs/ga.json"),
