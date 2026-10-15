@@ -156,4 +156,9 @@ export const uiStrings = [
   "Open the site",
   "That key does not work. Try again.",
   "The key stays on this device.",
+  "Cookies",
+  "This site saves your language on this device so it can open in that language next time. If you type an access key, it saves that too. It does not follow you around the web.",
+  "OK",
+  "Do not save my language",
+  "Save my language",
 ] as const;

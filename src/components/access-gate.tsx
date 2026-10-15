@@ -1,15 +1,22 @@
 import { Outlet, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SiteFooter, SiteHeader } from "@/components/chrome";
+import { CookieNotice } from "@/components/cookie-notice";
 import { Paywall } from "@/components/paywall";
 import { checkAccess } from "@/lib/access";
+import { readCookieChoice } from "@/lib/cookie-choice";
 
 const TOKEN_KEY = "ese-access";
 
 export function SiteShell() {
   const path = useRouterState({ select: (state) => state.location.pathname });
   const [open, setOpen] = useState(false);
+  const [cookieOpen, setCookieOpen] = useState(false);
   const locked = path !== "/" && !open;
+
+  useEffect(() => {
+    if (readCookieChoice() === null) setCookieOpen(true);
+  }, []);
 
   useEffect(() => {
     const token = window.localStorage.getItem(TOKEN_KEY);
@@ -30,7 +37,7 @@ export function SiteShell() {
   }, []);
 
   return (
-    <>
+    <div className={cookieOpen ? "pb-64 sm:pb-44" : undefined}>
       <SiteHeader />
       {locked ? (
         <Paywall
@@ -42,7 +49,8 @@ export function SiteShell() {
       ) : (
         <Outlet />
       )}
-      <SiteFooter />
-    </>
+      <SiteFooter onCookies={() => setCookieOpen(true)} />
+      <CookieNotice open={cookieOpen} onClose={() => setCookieOpen(false)} />
+    </div>
   );
 }

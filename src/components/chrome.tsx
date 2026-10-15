@@ -179,15 +179,24 @@ export function SiteHeader() {
   );
 }
 
-export function SiteFooter() {
+export function SiteFooter({ onCookies }: { onCookies: () => void }) {
   const { t } = useI18n();
   return (
     <footer className="mt-10 border-t-4 border-pitch bg-pitch px-4 py-6 text-vest">
       <div className="mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-xl text-base">{t("A sport has rules, a way to score, and a way to win.")}</p>
-        <Link to="/about" className="inline-flex h-11 items-center justify-center rounded-full bg-gold px-4 font-bold text-ink">
-          {t("About")}
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={onCookies}
+            className="inline-flex h-11 items-center justify-center rounded-full bg-vest px-4 font-bold text-ink"
+          >
+            {t("Cookies")}
+          </button>
+          <Link to="/about" className="inline-flex h-11 items-center justify-center rounded-full bg-gold px-4 font-bold text-ink">
+            {t("About")}
+          </Link>
+        </div>
       </div>
     </footer>
   );

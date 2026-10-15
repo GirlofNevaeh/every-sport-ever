@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { languageSaveAllowed, LANG_KEY } from "@/lib/cookie-choice";
 
 export const LOCALES = [
   { id: "en", native: "English" },
@@ -15,7 +16,7 @@ export const LOCALES = [
 
 export type LocaleId = (typeof LOCALES)[number]["id"];
 
-const STORAGE_KEY = "ese-lang";
+const STORAGE_KEY = LANG_KEY;
 
 type Pack = Record<string, string>;
 
@@ -63,13 +64,14 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (isLocale(saved)) setLocale(saved);
+    if (languageSaveAllowed() && isLocale(saved)) setLocale(saved);
     setBooted(true);
   }, []);
 
   useEffect(() => {
     if (!booted) return;
-    window.localStorage.setItem(STORAGE_KEY, locale);
+    if (languageSaveAllowed()) window.localStorage.setItem(STORAGE_KEY, locale);
+    else window.localStorage.removeItem(STORAGE_KEY);
     document.documentElement.lang = locale;
     let cancel = false;
     if (locale === "en") {
