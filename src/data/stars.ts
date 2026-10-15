@@ -295,7 +295,7 @@ export const stars: Star[] = [
     "She played with Misty May-Treanor for many of those wins.",
   ]),
   star("eve-muirhead", "Eve Muirhead", ["curling"], "Great Britain", "woman", [
-    "She skipped Great Britain to Olympic gold in curling in 2022.",
+    "She was the skip when Great Britain won Olympic gold in curling in 2022.",
     "She is from Scotland.",
   ]),
   star("nicol-david", "Nicol David", ["squash"], "Malaysia", "woman", [

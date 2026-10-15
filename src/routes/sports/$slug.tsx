@@ -44,7 +44,7 @@ function StarsRow({ stars }: { stars: ReturnType<typeof starsForSport> }) {
               className="flex w-28 flex-col items-center rounded-2xl bg-vest p-2 text-center text-ink"
             >
               <StarPortrait person={person} className="h-24 w-24 rounded-2xl border-4 border-gold" />
-              <span className="mt-1 text-sm font-bold leading-tight">{person.name}</span>
+              <span className="mt-1 text-sm font-bold leading-tight wrap-safe">{person.name}</span>
             </Link>
           </li>
         ))}
@@ -116,7 +116,7 @@ function CourtSport({
   const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
-      <article className="rounded-[2rem] border-4 border-ink bg-[linear-gradient(90deg,transparent_49%,#121212_49%,#121212_51%,transparent_51%),linear-gradient(#f7f4ef,#f7f4ef)] p-4 text-ink sm:p-6">
+      <article className="rounded-[2rem] border-4 border-ink bg-vest p-4 text-ink sm:p-6">
         {scene ? <img src={scene} alt="" className="mb-4 h-48 w-full rounded-3xl object-cover" /> : null}
         <p className="text-sm font-bold text-track">{t("On the court")}</p>
         <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
@@ -165,7 +165,7 @@ function WaterSport({
         </div>
         <ol className="mt-3 space-y-2">
           {sport.rules.map((rule, index) => (
-            <li key={rule} className="rounded-full bg-gold px-4 py-3 text-ink">
+            <li key={rule} className="rounded-3xl bg-gold px-4 py-3 text-ink">
               <span className="mr-2 font-display">{index + 1}</span>
               {t(rule)}
             </li>
@@ -289,7 +289,10 @@ function RoadSport({
         </div>
         <p className="mt-3 rounded-2xl border-4 border-ink p-4">
           <strong>{t("Score")}. </strong>
-          {t(sport.score)} <strong>{t("Win")}. </strong>
+          {t(sport.score)}
+        </p>
+        <p className="mt-3 rounded-2xl border-4 border-ink p-4">
+          <strong>{t("Win")}. </strong>
           {t(sport.win)}
         </p>
         <p className="mt-3 text-lg">{t(sport.fact)}</p>

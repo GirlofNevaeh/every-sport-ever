@@ -61,8 +61,8 @@ function StarsPage() {
                 className="block h-full rounded-3xl border-2 border-ink/10 bg-vest p-3 text-center"
               >
                 <StarPortrait person={person} className="mx-auto h-36 w-36 rounded-3xl border-4 border-gold" />
-                <span className="mt-2 block font-display text-lg leading-tight">{person.name}</span>
-                <span className="mt-1 block text-sm leading-tight text-muted">
+                <span className="mt-2 block font-display text-lg leading-tight wrap-safe">{person.name}</span>
+                <span className="mt-1 block text-sm leading-tight text-muted wrap-safe">
                   {sport ? t(sport.name) : ""} · {t(person.country)}
                 </span>
               </Link>

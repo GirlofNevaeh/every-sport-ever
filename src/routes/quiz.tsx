@@ -161,7 +161,7 @@ function QuizPage() {
     <main className="mx-auto max-w-3xl px-3 py-4">
       {flash ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gold px-4 text-center text-ink">
-          <p className="font-display text-5xl sm:text-7xl">{t("CONGRATULATIONS")}</p>
+          <p className="font-display text-4xl leading-tight wrap-safe sm:text-7xl">{t("CONGRATULATIONS")}</p>
         </div>
       ) : null}
 

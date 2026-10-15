@@ -30,7 +30,7 @@ function StarPage() {
       />
       <article className="rounded-[2rem] bg-ink p-5 text-vest">
         <p className="text-sm font-bold text-gold">{t(person.country)}</p>
-        <h1 className="font-display text-5xl leading-none">{person.name}</h1>
+        <h1 className="font-display text-4xl leading-tight wrap-safe sm:text-5xl">{person.name}</h1>
         <p className="mt-3 text-lg">
           {sport ? (
             <Link to="/sports/$slug" params={{ slug: sport.slug }} className="font-bold text-gold underline">
