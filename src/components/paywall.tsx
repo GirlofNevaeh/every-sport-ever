@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useI18n } from "@/i18n/locale";
 import { unlockAccess } from "@/lib/access";
 
-const SHOP = "https://everyschoolever.com";
+const SHOP = "https://www.everyschoolever.com/pricing?plan=";
 
 export function Paywall({ onUnlocked }: { onUnlocked: (token: string) => void }) {
   const { t } = useI18n();
