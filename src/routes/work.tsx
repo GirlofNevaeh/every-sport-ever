@@ -39,7 +39,7 @@ function WorkPage() {
         </div>
         {sport ? (
           <article>
-            <h2 className="font-display text-4xl text-pitch">{t(sport.name)}</h2>
+            <h2 className="font-display text-4xl leading-tight wrap-safe text-pitch">{t(sport.name)}</h2>
             <ol className="mt-3 list-decimal space-y-1 pl-5">
               {sport.rules.map((rule) => (
                 <li key={rule}>{t(rule)}</li>
@@ -142,7 +142,7 @@ function BlankTable({ rows }: { rows: string[] }) {
         {rows.map((country, index) => (
           <tr key={`${country}-${index}`} className="border-b border-ink/20">
             <td className="px-1 py-3 text-center">{index + 1}</td>
-            <td className="px-2 py-3">{country || " "}</td>
+            <td className="wrap-safe px-2 py-3">{country || " "}</td>
             <td className="border-l border-ink/20" />
             <td className="border-l border-ink/20" />
             <td className="border-l border-ink/20" />

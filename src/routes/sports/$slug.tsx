@@ -82,7 +82,7 @@ function PitchSport({
         {scene ? <img src={scene} alt="" className="h-52 w-full object-cover" /> : null}
         <div className="p-4 sm:p-6">
           <p className="text-sm font-bold text-gold">{t("On the field")}</p>
-          <h1 className="font-display text-5xl">{t(sport.name)}</h1>
+          <h1 className="font-display text-4xl leading-tight wrap-safe sm:text-5xl">{t(sport.name)}</h1>
           <p className="mt-2 max-w-2xl text-lg">{t(sport.where)}</p>
           <h2 className="mt-5 font-display text-2xl text-gold">{t("How you play")}</h2>
           <RuleList sport={sport} light />
@@ -119,7 +119,7 @@ function CourtSport({
       <article className="rounded-[2rem] border-4 border-ink bg-vest p-4 text-ink sm:p-6">
         {scene ? <img src={scene} alt="" className="mb-4 h-48 w-full rounded-3xl object-cover" /> : null}
         <p className="text-sm font-bold text-track">{t("On the court")}</p>
-        <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
+        <h1 className="font-display text-4xl leading-tight wrap-safe text-pitch sm:text-5xl">{t(sport.name)}</h1>
         <p className="mt-2 max-w-2xl">{t(sport.where)}</p>
         <div className="mt-4 grid gap-4 lg:grid-cols-2">
           <section className="rounded-3xl bg-vest/90 p-4">
@@ -160,7 +160,7 @@ function WaterSport({
         {scene ? <img src={scene} alt="" className="h-48 w-full rounded-3xl object-cover" /> : null}
         <div className="mt-3 rounded-3xl bg-pitch px-4 py-5 text-vest">
           <p className="text-sm font-bold text-gold">{t("In the water")}</p>
-          <h1 className="font-display text-5xl">{t(sport.name)}</h1>
+          <h1 className="font-display text-4xl leading-tight wrap-safe sm:text-5xl">{t(sport.name)}</h1>
           <p className="mt-2">{t(sport.where)}</p>
         </div>
         <ol className="mt-3 space-y-2">
@@ -202,7 +202,7 @@ function IceSport({
         <div className="rounded-[1.4rem] bg-vest p-4 sm:p-6">
           {scene ? <img src={scene} alt="" className="mb-3 h-44 w-full rounded-2xl object-cover" /> : null}
           <p className="text-sm font-bold text-track">{t("Ice and snow")}</p>
-          <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
+          <h1 className="font-display text-4xl leading-tight wrap-safe text-pitch sm:text-5xl">{t(sport.name)}</h1>
           <p className="mt-2">{t(sport.where)}</p>
           <h2 className="mt-4 font-display text-2xl">{t("How you play")}</h2>
           <RuleList sport={sport} />
@@ -237,7 +237,7 @@ function MatSport({
       <article className="rounded-[2rem] border-[10px] border-track bg-vest p-4 text-ink shadow-[inset_0_0_0_6px_#F2C14E] sm:p-6">
         {scene ? <img src={scene} alt="" className="mb-4 h-48 w-full rounded-3xl object-cover" /> : null}
         <p className="text-center text-sm font-bold text-track">{t("On the mat")}</p>
-        <h1 className="text-center font-display text-5xl">{t(sport.name)}</h1>
+        <h1 className="text-center font-display text-4xl leading-tight wrap-safe sm:text-5xl">{t(sport.name)}</h1>
         <p className="mt-2 text-center">{t(sport.where)}</p>
         <ul className="mt-4 space-y-2">
           {sport.rules.map((rule) => (
@@ -276,7 +276,7 @@ function RoadSport({
       <article>
         <div className="rounded-3xl bg-gold p-4 text-ink sm:p-6">
           <p className="text-sm font-bold">{t("On the move")}</p>
-          <h1 className="font-display text-5xl text-pitch">{t(sport.name)}</h1>
+          <h1 className="font-display text-4xl leading-tight wrap-safe text-pitch sm:text-5xl">{t(sport.name)}</h1>
           <p className="mt-2">{t(sport.where)}</p>
         </div>
         {scene ? <img src={scene} alt="" className="mt-3 h-48 w-full rounded-3xl object-cover" /> : null}

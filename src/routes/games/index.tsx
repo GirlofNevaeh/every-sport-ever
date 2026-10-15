@@ -12,7 +12,7 @@ function GamesPage() {
       <div className="mt-4 grid gap-4">
         <Link to="/games/olympic" className="grid min-h-48 overflow-hidden rounded-[2rem] bg-pitch text-vest sm:grid-cols-[1.2fr_1fr]">
           <span className="flex flex-col justify-center p-5">
-            <span className="font-display text-4xl">{t("Olympic Games")}</span>
+            <span className="font-display text-4xl leading-tight wrap-safe">{t("Olympic Games")}</span>
             <span className="mt-2 text-lg">{t("A worldwide meeting of sports, summer and winter, every four years.")}</span>
           </span>
           <span className="flex items-center justify-center bg-gold p-6 text-center font-display text-2xl text-ink">
@@ -24,12 +24,12 @@ function GamesPage() {
             {t("Paris 2024 table")}
           </span>
           <span className="order-1 flex flex-col justify-center p-5 sm:order-2">
-            <span className="font-display text-4xl">{t("Paralympics")}</span>
+            <span className="font-display text-4xl leading-tight wrap-safe">{t("Paralympics")}</span>
             <span className="mt-2 text-lg">{t("The worldwide Games for athletes with disabilities.")}</span>
           </span>
         </Link>
         <Link to="/games/special" className="grid min-h-48 items-center overflow-hidden rounded-[2rem] border-4 border-ink bg-gold text-ink sm:grid-cols-3">
-          <span className="p-5 font-display text-4xl sm:col-span-2">{t("Special Olympics")}</span>
+          <span className="p-5 font-display text-4xl leading-tight wrap-safe sm:col-span-2">{t("Special Olympics")}</span>
           <span className="px-5 pb-5 text-lg sm:pb-0">{t("A medal means you did well in your group.")}</span>
         </Link>
       </div>

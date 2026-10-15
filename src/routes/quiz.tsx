@@ -167,7 +167,7 @@ function QuizPage() {
 
       {phase === "setup" ? (
         <section>
-          <h1 className="font-display text-5xl text-pitch">{t("Class Quiz")}</h1>
+          <h1 className="font-display text-4xl leading-tight wrap-safe text-pitch sm:text-5xl">{t("Class Quiz")}</h1>
           <p className="mt-2 text-lg">{t("Quick 10 or Mega 25. Play solo, or with up to 10 teams of 4.")}</p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <button
@@ -222,11 +222,12 @@ function QuizPage() {
                     </label>
                     <input
                       id={`team-${team}`}
-                      value={name ?? tf("Team {n}", { n: team + 1 })}
+                      value={name ?? ""}
+                      placeholder={tf("Team {n}", { n: team + 1 })}
                       onChange={(event) =>
                         setCustom((current) => current.map((item, id) => (id === team ? event.target.value : item)))
                       }
-                      className="h-11 w-full rounded-full border-2 border-gold bg-vest px-3 text-ink"
+                      className="h-11 w-full rounded-full border-2 border-gold bg-vest px-3 text-ink placeholder:text-muted"
                     />
                   </li>
                 ))}

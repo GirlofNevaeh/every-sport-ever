@@ -48,7 +48,7 @@ function OlympicPage() {
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <p className="text-sm font-bold text-pitch">{t("Summer and winter")}</p>
-      <h1 className="font-display text-5xl text-ink">{t("Olympic Games")}</h1>
+      <h1 className="font-display text-4xl leading-tight wrap-safe text-ink sm:text-5xl">{t("Olympic Games")}</h1>
       <div className="mt-3 grid gap-3 sm:grid-cols-3">
         <p className="rounded-3xl bg-pitch p-4 text-vest">{t("The Olympic Games are a worldwide meeting of sports.")}</p>
         <p className="rounded-3xl bg-gold p-4 text-ink">{t("There are Summer Games and Winter Games.")}</p>

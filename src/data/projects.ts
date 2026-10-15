@@ -225,14 +225,14 @@ export const stages: Stage[] = [
           time: "20 minutes",
           need: "The Sports pages",
           steps: ["Pick two sports that use a ball.", "Write one way they are the same.", "Draw the ball."],
-          done: "You have one same thing and a drawing.",
+          done: "You have one similarity and a drawing.",
         },
         team: {
           title: "One difference",
           time: "25 minutes",
           need: "Paper and a pencil",
           steps: ["Share your two sports.", "The team names one difference.", "Write that difference."],
-          done: "The team has one same and one different.",
+          done: "The team has one similarity and one difference.",
         },
       },
       {
@@ -387,7 +387,7 @@ export const stages: Stage[] = [
         "Write one way they are the same.",
         "Write one way they are different.",
       ],
-      done: "You have one same and one different.",
+      done: "You have one similarity and one difference.",
     },
     team: {
       title: "Sort the sports",

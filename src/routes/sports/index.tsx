@@ -54,7 +54,7 @@ function SportsPage() {
                   current.includes(filter.id) ? current.filter((item) => item !== filter.id) : [...current, filter.id],
                 )
               }
-              className={`h-11 rounded-full px-3 text-center text-sm font-bold leading-tight sm:text-base ${
+              className={`min-h-11 rounded-full px-3 py-2 text-center text-sm font-bold leading-tight wrap-safe sm:text-base ${
                 dead ? "bg-ink/10 text-ink/35" : on ? "bg-track text-vest" : "bg-gold text-ink"
               }`}
             >
@@ -84,7 +84,7 @@ function SportsPage() {
                         : "border-pitch bg-vest text-ink"
               }`}
             >
-              <span className="font-display text-2xl leading-tight">{t(sport.name)}</span>
+              <span className="font-display text-2xl leading-tight wrap-safe">{t(sport.name)}</span>
               <span className="text-sm leading-snug">{t(sport.quizWhere)}</span>
             </Link>
           </li>

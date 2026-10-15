@@ -166,7 +166,7 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
-                className={`flex min-h-8 items-center justify-center rounded-full px-1 py-1 text-center text-xs font-bold leading-tight ${active ? "bg-pitch text-vest" : "bg-ink/5 text-ink"}`}
+                className={`flex min-h-8 items-center justify-center rounded-full px-1 py-1 text-center text-xs font-bold leading-tight wrap-safe ${active ? "bg-pitch text-vest" : "bg-ink/5 text-ink"}`}
               >
                 {t(item.label)}
               </Link>

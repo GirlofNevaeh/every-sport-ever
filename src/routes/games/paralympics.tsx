@@ -28,7 +28,7 @@ function ParalympicPage() {
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
       <div className="rounded-[2rem] bg-track p-5 text-vest">
-        <h1 className="font-display text-5xl">{t("Paralympics")}</h1>
+        <h1 className="font-display text-4xl leading-tight wrap-safe sm:text-5xl">{t("Paralympics")}</h1>
         <p className="mt-3 max-w-2xl text-lg">
           {t("The Paralympics are the worldwide Games for athletes with disabilities.")}
         </p>

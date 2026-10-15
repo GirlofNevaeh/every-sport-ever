@@ -36,7 +36,7 @@ function Home() {
         <img src={hero} alt="" className="h-48 w-full object-cover sm:h-64" />
         <div className="p-4 sm:p-6">
           <p className="text-sm font-bold uppercase tracking-wide text-gold">{t("Today")}</p>
-          <h1 className="mt-1 font-display text-4xl sm:text-5xl">{t(today.sport.name)}</h1>
+          <h1 className="mt-1 font-display text-4xl leading-tight wrap-safe sm:text-5xl">{t(today.sport.name)}</h1>
           <p className="mt-2 max-w-xl text-lg">{t(today.sport.fact)}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
@@ -108,15 +108,15 @@ function Home() {
 
       <section className="mt-6 grid gap-3 sm:grid-cols-3">
         <Link to="/games/olympic" className="flex min-h-44 flex-col justify-between rounded-3xl bg-pitch p-4 text-vest">
-          <span className="font-display text-3xl leading-none">{t("Olympic Games")}</span>
+          <span className="font-display text-3xl leading-tight wrap-safe">{t("Olympic Games")}</span>
           <span>{t("Summer and winter. Every four years.")}</span>
         </Link>
         <Link to="/games/paralympics" className="flex min-h-44 flex-col justify-between rounded-3xl bg-track p-4 text-vest">
-          <span className="font-display text-3xl leading-none">{t("Paralympics")}</span>
+          <span className="font-display text-3xl leading-tight wrap-safe">{t("Paralympics")}</span>
           <span>{t("Games for athletes with disabilities.")}</span>
         </Link>
         <Link to="/games/special" className="flex min-h-44 flex-col justify-between rounded-3xl bg-gold p-4 text-ink">
-          <span className="font-display text-3xl leading-none">{t("Special Olympics")}</span>
+          <span className="font-display text-3xl leading-tight wrap-safe">{t("Special Olympics")}</span>
           <span>{t("Sports for people with intellectual disabilities.")}</span>
         </Link>
       </section>

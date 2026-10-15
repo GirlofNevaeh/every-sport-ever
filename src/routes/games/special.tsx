@@ -10,7 +10,7 @@ function SpecialPage() {
   const { t } = useI18n();
   return (
     <main className="mx-auto max-w-5xl px-3 py-4">
-      <h1 className="font-display text-5xl text-ink">{t("Special Olympics")}</h1>
+      <h1 className="font-display text-4xl leading-tight wrap-safe text-ink sm:text-5xl">{t("Special Olympics")}</h1>
       <div className="mt-4 grid gap-3 md:grid-cols-3">
         <p className="rounded-3xl bg-gold px-4 py-5 text-lg text-ink">
           {t("The Special Olympics are sports for people with intellectual disabilities.")}
