@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { questions, shuffleQuestions, type Question } from "@/data/quiz";
+import { holdAudio, playCheer, playFart, warmAudio } from "@/lib/quiz-sounds";
 import { useI18n } from "@/i18n/locale";
 
 export const Route = createFileRoute("/quiz")({ component: QuizPage });
@@ -33,6 +34,12 @@ function QuizPage() {
   const scoresRef = useRef<number[]>([]);
   const timer = useRef<number | null>(null);
 
+  useEffect(() => {
+    const prime = () => warmAudio();
+    window.addEventListener("pointerdown", prime);
+    return () => window.removeEventListener("pointerdown", prime);
+  }, []);
+
   const count = mode === "teams" ? teamCount : 1;
   const question = bank.length ? bank[index % bank.length] : null;
   const asked = sudden ? length + suddenRounds + 1 : index + 1;
@@ -45,6 +52,7 @@ function QuizPage() {
   }
 
   function start() {
+    warmAudio();
     clearTimer();
     const nextScores = Array.from({ length: count }, () => 0);
     scoresRef.current = nextScores;
@@ -62,16 +70,17 @@ function QuizPage() {
   }
 
   function choose(team: number, choice: number) {
+    warmAudio();
+    holdAudio(3000);
     if (phase !== "question") return;
     if (!active.includes(team)) return;
-    setPicks((current) => {
-      const next = current.map((pick, id) => (id === team ? choice : pick));
-      if (active.every((id) => next[id] !== null)) {
-        const locked = next.slice();
-        queueMicrotask(() => lock(locked));
-      }
-      return next;
-    });
+    const next = picks.map((pick, id) => (id === team ? choice : pick));
+    setPicks(next);
+    if (!question || !active.every((id) => next[id] !== null)) return;
+    const answer = question.answer;
+    if (active.some((id) => next[id] === answer)) playCheer();
+    if (active.some((id) => next[id] !== answer)) playFart();
+    queueMicrotask(() => lock(next));
   }
 
   function lock(currentPicks: (number | null)[]) {
